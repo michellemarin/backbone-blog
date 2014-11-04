@@ -7,9 +7,9 @@ BackboneBlog.Collections = BackboneBlog.Collections || {};
 
     BackboneBlog.Collections.Posts = Backbone.Collection.extend({
 
-        model: BackboneBlog.Models.Posts,
+        model: BackboneBlog.Models.Blog,
 
-        url: 'https://tiny-pizza-server.herokuapp.com/collections/my-backbone-blog'
+        url: 'https://tiny-pizza-server.herokuapp.com/collections/michelle-backbone-blog'
 
     });
 

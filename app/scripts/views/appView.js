@@ -13,35 +13,33 @@ BackboneBlog.Views = BackboneBlog.Views || {};
 
 
         events: {
-          "submit #new" : "onSubmit"
+          "click #new" : "onSubmit"
         },
 
         onSubmit: function (e) {
             e.preventDefault();
-            var title = $('#title');
-            var post = $('#post');
-            var blog = new BackboneBlog.Models.Post({
-                title: title.val(),
-                post: post.val()
+            var blogTitle = $('#title');
+            var blogPost = $('#post');
+            var blogOutput = new BackboneBlog.Models.Blog({
+                title: blogTitle.val(),
+                post: blogPost.val()
             });
-            BackboneBlog.Posts.add(post);
-            post.save();
-            title.val(' ');
-            post.val(' ');
+            BackboneBlog.Posts.add(blogOutput);
+            blogOutput.save();
+            blogTitle.val(' ');
+            blogPost.val(' ');
         },
 
         initialize: function () {
-            this.postList = this.$el.find('#posts');
             this.listenTo(BackboneBlog.Posts, 'add', this.addOne);
             this.listenTo(BackboneBlog.Posts, 'reset', this.addAll);
-
             this.render();
             BackboneBlog.Posts.fetch();
         },
 
-        addOne: function (reminder) {
-            var postView = new BackboneBlog.Views.Post(post);
-            $('#posts').append(postView.render().el);
+        addOne: function (blogOutput) {
+            var postView = new BackboneBlog.Views.Post(blogOutput);
+            $('.post-content').append(postView.render().el);
         },
 
         addAll: function () {

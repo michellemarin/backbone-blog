@@ -7,13 +7,12 @@ BackboneBlog.Models = BackboneBlog.Models || {};
 
     BackboneBlog.Models.Blog = Backbone.Model.extend({
 
-        url: 'https://tiny-pizza-server.herokuapp.com/collections/my-backbone-blog',
+        url: 'https://tiny-pizza-server.herokuapp.com/collections/michelle-backbone-blog',
 
         initialize: function() {
         },
 
         defaults: {
-          id: new Date().getTime(),
           title: 'no title',
           post: 'nothing to say here...',
           sentAt: new Date()

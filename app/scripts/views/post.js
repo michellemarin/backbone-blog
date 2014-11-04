@@ -13,7 +13,7 @@ BackboneBlog.Views = BackboneBlog.Views || {};
 
         events: {},
 
-        initialize: function () {
+        initialize: function (model) {
             this.model = model;
             this.listenTo(this.model, 'change', this.render);
         },
