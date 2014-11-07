@@ -9,7 +9,9 @@ BackboneBlog.Views = BackboneBlog.Views || {};
 
         template: JST['app/scripts/templates/post.ejs'],
 
-        el: $('#posts'),
+        tagName: 'li',
+
+        className: 'post',
 
         events: {},
 

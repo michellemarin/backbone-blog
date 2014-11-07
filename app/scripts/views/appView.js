@@ -9,37 +9,37 @@ BackboneBlog.Views = BackboneBlog.Views || {};
 
         template: JST['app/scripts/templates/appView.ejs'],
 
-        el: $('#blog-app'),
+        el: $('#appContainer'),
 
 
         events: {
-          "click #new" : "onSubmit"
+          'submit #newPost' : 'onSubmit'
         },
 
-        onSubmit: function (e) {
-            e.preventDefault();
-            var blogTitle = $('#title');
-            var blogPost = $('#post');
-            var blogOutput = new BackboneBlog.Models.Blog({
-                title: blogTitle.val(),
-                post: blogPost.val()
+        onSubmit: function (event) {
+            event.preventDefault();
+            var title = $('#title');
+            var body = $('#body');
+            console.log('on submit called');
+
+            var post = new BackboneBlog.Models.Post({
+                title: title.val(),
+                body: body.val()
             });
-            BackboneBlog.Posts.add(blogOutput);
-            blogOutput.save();
-            blogTitle.val(' ');
-            blogPost.val(' ');
+            BackboneBlog.Posts.add(post);
+            post.save();
+            $('input[type=text]').val('');
         },
 
         initialize: function () {
             this.listenTo(BackboneBlog.Posts, 'add', this.addOne);
-            this.listenTo(BackboneBlog.Posts, 'reset', this.addAll);
             this.render();
             BackboneBlog.Posts.fetch();
         },
 
         addOne: function (blogOutput) {
             var postView = new BackboneBlog.Views.Post(blogOutput);
-            $('.post-content').append(postView.render().el);
+            $('#posts').append(postView.render().el);
         },
 
         addAll: function () {

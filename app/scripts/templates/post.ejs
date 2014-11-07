@@ -1,9 +1,9 @@
 <div class= 'blog-post'>
 <div class='post-content'>
   <h1><%= title %></h1>
-  <p><%= post %></p>
+  <p><%= body %></p>
 </div>
   <div class='time'>
-  <%= sentAt %>
+  <%= moment(sentAt).fromNow() %>
   </div>
 </div>
